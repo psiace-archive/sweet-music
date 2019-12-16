@@ -1,12 +1,42 @@
 <template>
-  <div id="app">
+  <div id="app" :style="`background-color: ${backgroundColor};`">
+    <Alert v-show="unsupportedBrowser">
+      Uh-oh! Your browser doesn't support web audio.
+      Don't worry, Upgrade your browser today!
+      <a
+        href="https://browsehappy.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Please Check Here.</a>.
+    </Alert>
+    <Tuner @unsupported-browser="onUnsupportedBrowser" @cents-changed="onCentsChanged" />
   </div>
 </template>
 
 <script>
+import Alert from "./components/Alert";
+import Tuner from "./components/Tuner";
+
 export default {
   name: "app",
-  components: {}
+  components: {
+    Alert,
+    Tuner
+  },
+  data() {
+    return {
+      backgroundColor: "#2c0",
+      unsupportedBrowser: false
+    };
+  },
+  methods: {
+    onUnsupportedBrowser() {
+      this.unsupportedBrowser = true;
+    },
+    onCentsChanged(cents) {
+      this.backgroundColor = Math.abs(cents) > 10 ? "#c20" : "#2c0";
+    }
+  }
 };
 </script>
 
@@ -15,8 +45,9 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
 }
 </style>
