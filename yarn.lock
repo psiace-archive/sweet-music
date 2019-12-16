@@ -5714,6 +5714,11 @@ pinkie@^2.0.0:
   resolved "https://registry.npm.taobao.org/pinkie/download/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
+pitchfinder@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/pitchfinder/download/pitchfinder-2.1.0.tgz#51c299e21c8932420dbe5840a5037547ee4cd589"
+  integrity sha1-UcKZ4hyJMkINvlhApQN1R+5M1Yk=
+
 pkg-dir@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/pkg-dir/download/pkg-dir-1.0.0.tgz#7a4b508a8d5bb2d629d447056ff4e9c9314cf3d4"
