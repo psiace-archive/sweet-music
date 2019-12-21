@@ -4,7 +4,7 @@
       {{ note }}
       <sub>{{ octave }}</sub>
     </h1>
-    <h3>{{ cents | formatCents }}</h3>
+    <h3>{{ cents | formatCents }} - {{hz}} HZ</h3>
   </div>
 </template>
 
@@ -16,7 +16,8 @@ export default {
     return {
       note: "A",
       octave: 4,
-      cents: 0
+      cents: 0,
+      hz: 440
     };
   },
   mounted() {
@@ -56,6 +57,7 @@ export default {
                 this.note = note;
                 this.octave = Math.floor(4 + (9 + semitones) / 12);
                 this.cents = cents - semitones * 100;
+                this.hz = Math.round(hz * 10000) / 10000;
                 this.$emit("cents-changed", this.cents);
               }
             }
