@@ -10,18 +10,21 @@
       >Please Check Here.</a>.
     </Alert>
     <Tuner @unsupported-browser="onUnsupportedBrowser" @cents-changed="onCentsChanged" />
+    <Spectrogram @unsupported-browser="onUnsupportedBrowser"/>
   </div>
 </template>
 
 <script>
 import Alert from "./components/Alert";
 import Tuner from "./components/Tuner";
+import Spectrogram from "./components/Spectrogram";
 
 export default {
   name: "app",
   components: {
     Alert,
-    Tuner
+    Tuner,
+    Spectrogram
   },
   data() {
     return {
