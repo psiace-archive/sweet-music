@@ -92,7 +92,8 @@ export default {
 }
 h1 {
   font-size: 12rem;
-  margin: 0;
+  margin-top: 15vh;
+  margin-bottom: 0;
 }
 sub {
   font-size: 4rem;
