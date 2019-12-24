@@ -9,8 +9,10 @@
         rel="noopener noreferrer"
       >Please Check Here.</a>.
     </Alert>
-    <Tuner @unsupported-browser="onUnsupportedBrowser" @cents-changed="onCentsChanged" />
-    <Spectrogram @unsupported-browser="onUnsupportedBrowser"/>
+    <div>
+      <Tuner @unsupported-browser="onUnsupportedBrowser" @cents-changed="onCentsChanged" />
+      <Spectrogram @unsupported-browser="onUnsupportedBrowser" />
+    </div>
   </div>
 </template>
 
@@ -28,7 +30,7 @@ export default {
   },
   data() {
     return {
-      backgroundColor: "#2c0",
+      backgroundColor: "rgb(25, 228, 76)",
       unsupportedBrowser: false
     };
   },
@@ -37,7 +39,7 @@ export default {
       this.unsupportedBrowser = true;
     },
     onCentsChanged(cents) {
-      this.backgroundColor = Math.abs(cents) > 10 ? "#c20" : "#2c0";
+      this.backgroundColor = Math.abs(cents) > 10 ? "rgb(248, 17, 17)" : "rgb(25, 228, 76)";
     }
   }
 };
@@ -45,10 +47,10 @@ export default {
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica", Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #e7ebf0;
+  color: #3b073ffa;
   height: 100vh;
   width: 100vw;
   margin: 0;
