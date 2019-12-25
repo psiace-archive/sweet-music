@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "core-js": "^3.4.3",
-    "pitchfinder": "^2.1.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
