@@ -31,14 +31,11 @@ export default {
           const processor = context.createScriptProcessor(4096);
           source.connect(processor);
           processor.connect(context.destination);
-          const AMDF = PitchFinder.AMDF({
-            sampleRate: context.sampleRate,
-            minFrequency: 0,
-            maxFrequency: 1600,
-            sensitivity: 0.3
+          const ACF2PLUS = PitchFinder.ACF2PLUS({
+            sampleRate: context.sampleRate
           });
           processor.onaudioprocess = e => {
-            const hz = AMDF(e.inputBuffer.getChannelData(0));
+            const hz = ACF2PLUS(e.inputBuffer.getChannelData(0));
             if (hz) {
               // ¢ or c = 1200 × log2 (f2 / f1)
               let semitones = 12 * Math.log2(hz / 440);
