@@ -1,6 +1,6 @@
 const DEFAULT_SAMPLE_RATE = 44100;
 
-module.exports = function(config = {}) {
+module.exports = function (config = {}) {
   const sampleRate = config.sampleRate || DEFAULT_SAMPLE_RATE;
 
   // Implements the ACF2+ algorithm
@@ -10,7 +10,7 @@ module.exports = function(config = {}) {
     const maxShift = float32AudioBuffer.length;
 
     let rms = 0;
-    let frames, thres, i, j, u, aux1, aux2, tmp;
+    let thres, i, j, u, aux1, aux2, tmp;
 
     for (i = 0; i < maxShift; i++) {
       tmp = float32AudioBuffer[i];
@@ -37,10 +37,10 @@ module.exports = function(config = {}) {
         break;
       }
 
-    frames = float32AudioBuffer.slice(aux1, aux2);
+    const frames = float32AudioBuffer.slice(aux1, aux2);
     const framesLength = frames.length;
 
-    let calcSub = new Array(framesLength).fill(0);
+    const calcSub = new Array(framesLength).fill(0);
     for (i = 0; i < framesLength; i++)
       for (j = 0; j < framesLength - i; j++)
         calcSub[i] = calcSub[i] + frames[j] * frames[j + i];
@@ -67,8 +67,8 @@ module.exports = function(config = {}) {
     const y1 = calcSub[T0 - 1],
       y2 = calcSub[T0],
       y3 = calcSub[T0 + 1];
-    let a = (y1 + y3 - 2 * y2) / 2;
-    let b = (y3 - y1) / 2;
+    const a = (y1 + y3 - 2 * y2) / 2;
+    const b = (y3 - y1) / 2;
     if (a) T0 = T0 - b / (2 * a);
 
     return sampleRate / T0;
