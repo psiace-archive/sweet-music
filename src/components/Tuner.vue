@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import PitchFinder from "pitchfinder";
+import PitchFinder from "../lib/PitchFinder";
 const NOTES = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 export default {
   data() {
