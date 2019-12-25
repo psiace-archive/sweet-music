@@ -11,7 +11,7 @@
     </Alert>
     <div>
       <Tuner @unsupported-browser="onUnsupportedBrowser" @cents-changed="onCentsChanged" />
-      <Spectrogram @unsupported-browser="onUnsupportedBrowser" />
+      <Spectrogram />
     </div>
   </div>
 </template>
@@ -39,7 +39,8 @@ export default {
       this.unsupportedBrowser = true;
     },
     onCentsChanged(cents) {
-      this.backgroundColor = Math.abs(cents) > 10 ? "rgb(248, 17, 17)" : "rgb(25, 228, 76)";
+      this.backgroundColor =
+        Math.abs(cents) > 10 ? "rgb(248, 17, 17)" : "rgb(25, 228, 76)";
     }
   }
 };
