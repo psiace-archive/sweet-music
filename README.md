@@ -40,7 +40,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## LICENSE
 
-NO LICENSE. BECAUSE I NOT WANT TO TAKE THE FRUITS OF OTHERS.
+NO LICENSE. BECAUSE I DO NOT WANT TO TAKE THE FRUITS OF OTHERS.
 
 ## Acknowledgments
 
