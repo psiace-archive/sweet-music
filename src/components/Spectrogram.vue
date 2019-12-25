@@ -17,6 +17,13 @@ export default {
           const acontext = new (window.AudioContext ||
             window.webkitAudioContext)();
           const source = acontext.createMediaStreamSource(stream);
+          var analyser = acontext.createAnalyser();
+
+          source.connect(analyser);
+          analyser.connect(acontext.destination);
+          analyser.fftSize = 128; //必须是2的整数倍
+
+          var bufferLength = analyser.frequencyBinCount; // = fftSize * 0.5
 
           //part1: 画布
           var canvas = document.getElementById("canvas");
@@ -26,14 +33,6 @@ export default {
           canvas.height = window.innerHeight;
           var WIDTH = canvas.width;
           var HEIGHT = canvas.height;
-
-          var analyser = acontext.createAnalyser();
-
-          source.connect(analyser);
-          analyser.connect(acontext.destination);
-          analyser.fftSize = 128; //必须是2的整数倍
-
-          var bufferLength = analyser.frequencyBinCount; // = fftSize * 0.5
 
           //part4: 变量
           var barWidth = WIDTH / bufferLength - 1; //间隔1px
@@ -45,7 +44,7 @@ export default {
           function renderFrame() {
             requestAnimationFrame(renderFrame); //方法renderFrame托管到定时器，无限循环调度，频率<16.6ms/次
 
-            context.fillStyle = "rgba(0, 0, 0, 0.5)"; //黑色背景
+            context.fillStyle = "rgb(0, 0, 0)"; //黑色背景
             context.fillRect(0, 0, WIDTH, HEIGHT); //画布拓展全屏,动态调整
 
             analyser.getByteFrequencyData(dataArray); //获取当前时刻的音频数据
@@ -75,9 +74,7 @@ export default {
           renderFrame();
         })
         .catch(() => {});
-    } else {
-      this.$emit("unsupported-browser");
-    }
+    } 
   }
 };
 </script>
